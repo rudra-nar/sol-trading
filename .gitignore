@@ -1,6 +1,7 @@
-# Data (large, downloaded)
-data/
-runs/
+# Data (large, downloaded) - anchored to repository root
+/data/
+/runs/
+project_dump.txt
 
 # Python
 __pycache__/
