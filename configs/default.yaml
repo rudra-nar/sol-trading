@@ -1,0 +1,44 @@
+instrument: SOLUSDT
+venue: binance_usdm
+bar_tf: 5m
+degrees:
+  - {tf: 15m, atr_period: 14, mult: 3.0}
+  - {tf: 1h,  atr_period: 14, mult: 3.0}
+  - {tf: 4h,  atr_period: 14, mult: 2.5}
+  - {tf: 1D,  atr_period: 14, mult: 2.0}
+pivot_window: 12
+top_k_hypotheses: 5
+weight_ema_alpha: 0.8
+min_hyp_weight: 0.25
+min_weight_margin: 0.10
+fib:
+  retr: [0.236, 0.382, 0.5, 0.618, 0.786]
+  ext:  [1.272, 1.618, 2.618, 4.236]
+  confluence_tol_atr: 0.4
+setup:
+  min_rr: 2.0
+  stop_buffer_atr: 0.5
+  max_setup_age_bars: 24
+risk:
+  risk_fraction: 0.005          # 0.5% of equity per trade
+  max_leverage: 3.0
+  max_daily_loss_r: 3.0
+  max_drawdown_halt: 0.10
+  max_consecutive_losses: 5
+sim:
+  latency_ms:
+    dist: lognormal
+    median: 80
+    sigma: 0.5
+  fee_maker: 0.0002            # PLACEHOLDER — set your actual fee tier!
+  fee_taker: 0.0005            # PLACEHOLDER — set your actual fee tier!
+  slippage_stress_multiplier: 1.0
+  stop_trigger_price: mark     # mark|last
+label:
+  horizon_bars: 96             # 8 hours of 5m bars
+  stop_first_on_tie: true
+cv:
+  train_bars: 210000
+  test_bars: 26000
+  embargo_bars: 200
+seed: 42

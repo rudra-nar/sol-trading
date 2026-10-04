@@ -1,0 +1,1 @@
+"""Bar builder and resampler."""
